@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0)); // random seed
+    int secret = rand() % 10 + 1;  // number between 1 and 10
+    int guess;
+    int score = 0;
+    int attempts = 5;
+
+    cout << "=== Number Quest ===\n";
+    cout << "Guess a number between 1 and 10\n";
+    cout << "You have 5 attempts\n\n";
+
+    while(attempts > 0) {
+        cout << "Enter your guess: ";
+        cin >> guess;
+
+        if(guess == secret) {
+            cout << "Correct! +10 points\n";
+            score += 10;
+            break;
+        }
+        else {
+            cout << "Wrong! -2 points\n";
+            score -= 2;
+            attempts--;
+            cout << "Attempts left: " << attempts << "\n\n";
+        }
+    }
+
+    cout << "\nGame Over\n";
+    cout << "Final Score: " << score << endl;
+
+    return 0;
+}
